@@ -12,16 +12,16 @@ Configure your KMP module by:
       sourceSets {
         commonMain {
             dependencies {
-                implementation("TODO")
+                implementation("io.github.mykhailo-liutov:koinexport-core:1.01")
             }
         }
     }
    ```
-2. Adding dependency on the processor and configuring it:
+2. Adding dependency on the ksp processor and configuring it:
 
    ```
       dependencies {
-         add("kspCommonMainMetadata", TODO)
+         add("kspCommonMainMetadata", "io.github.mykhailo-liutov:koinexport-processor:1.01")
        }
 
     tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
