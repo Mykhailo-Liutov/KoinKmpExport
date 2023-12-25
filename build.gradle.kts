@@ -5,6 +5,7 @@ plugins {
             android.application,
             android.library,
             kotlin.android,
+            kotlin.dokka,
             kotlin.multiplatform,
         ).forEach {
             alias(it) apply false

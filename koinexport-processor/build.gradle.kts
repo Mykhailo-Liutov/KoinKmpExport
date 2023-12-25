@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm")
     `maven-publish`
     signing
+    alias(libs.plugins.kotlin.dokka)
 }
 
 dependencies {
@@ -17,8 +18,25 @@ kotlin {
     jvmToolchain(11)
 }
 
+val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+
+val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
+    dependsOn(dokkaHtml)
+    archiveClassifier.set("javadoc")
+    from(dokkaHtml.outputDirectory)
+}
+
+//region Fix Gradle warning about signing tasks using publishing task outputs without explicit dependencies
+// https://github.com/gradle/gradle/issues/26091
+tasks.withType<AbstractPublishToMaven>().configureEach {
+    val signingTasks = tasks.withType<Sign>()
+    mustRunAfter(signingTasks)
+}
+
 publishing {
     publications.create<MavenPublication>("Maven"){
+        artifact(javadocJar)
+
         groupId = "io.github.mykhailo-liutov"
         version = "1.0"
 
