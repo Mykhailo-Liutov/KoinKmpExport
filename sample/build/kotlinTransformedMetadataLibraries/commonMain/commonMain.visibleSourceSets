@@ -1,0 +1,2 @@
+project ::koinexport-core => commonMain
+module io.insert-koin:koin-core:3.4.3 => commonMain
