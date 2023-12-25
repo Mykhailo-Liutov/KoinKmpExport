@@ -9,20 +9,20 @@ Configure your KMP module by:
 1. Adding dependency on `core` module to be able to add the annotation.
 
    ```
-      sourceSets {
-        commonMain {
-            dependencies {
-                implementation("io.github.mykhailo-liutov:koinexport-core:1.01")
-            }
+    sourceSets {
+       commonMain {
+          dependencies {
+             implementation("io.github.mykhailo-liutov:koinexport-core:1.01")
+          }
         }
     }
    ```
 2. Adding dependency on the ksp processor and configuring it:
 
    ```
-      dependencies {
-         add("kspCommonMainMetadata", "io.github.mykhailo-liutov:koinexport-processor:1.01")
-       }
+    dependencies {
+       add("kspCommonMainMetadata", "io.github.mykhailo-liutov:koinexport-processor:1.01")
+    }
 
     tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
         if (name.contains("ios", ignoreCase = true)) {
