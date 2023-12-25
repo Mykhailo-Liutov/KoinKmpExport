@@ -18,6 +18,10 @@ kotlin {
     jvmToolchain(11)
 }
 
+java {
+    withSourcesJar()
+}
+
 val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
 
 val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
@@ -34,11 +38,11 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
 }
 
 publishing {
-    publications.create<MavenPublication>("Maven"){
+    publications.create<MavenPublication>("Maven") {
         artifact(javadocJar)
 
         groupId = "io.github.mykhailo-liutov"
-        version = "1.0"
+        version = "1.01"
 
         from(components["java"])
 
@@ -70,6 +74,15 @@ publishing {
         maven {
             name = "SonatypeSnapshot"
             url = URI.create("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+
+            credentials {
+                username = properties["ossrhUsername"] as? String
+                password = properties["ossrhPassword"] as? String
+            }
+        }
+        maven {
+            name = "sonatype"
+            url = URI.create("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
 
             credentials {
                 username = properties["ossrhUsername"] as? String
