@@ -42,7 +42,7 @@ publishing {
         artifact(javadocJar)
 
         groupId = "io.github.mykhailo-liutov"
-        version = "1.01"
+        version = "1.1"
 
         from(components["java"])
 
