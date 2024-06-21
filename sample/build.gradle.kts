@@ -44,8 +44,14 @@ dependencies {
     add("kspCommonMainMetadata", projects.koinexportProcessor)
 }
 
+ksp {
+    arg("packageName", "io.github.mykhailoliutov.koinexport.sample")
+    arg("exportsFileName", "AppDependency")
+    arg("mode", "properties")
+}
+
 tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-    if (name.contains("ios", ignoreCase = true)) {
+    if (name.contains("android", ignoreCase = true)) {
         dependsOn("kspCommonMainKotlinMetadata")
     }
 }

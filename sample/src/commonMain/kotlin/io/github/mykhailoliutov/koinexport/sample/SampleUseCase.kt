@@ -8,3 +8,17 @@ class SampleUseCase {
     operator fun invoke(): String = "Hello!"
 
 }
+
+@KoinKmmExport
+class SampleUseCase2 {
+
+    operator fun invoke(): String = "Hello1!"
+
+}
+
+@KoinKmmExport
+class SampleUseCas3 {
+
+    operator fun invoke(): String = "Hello2!"
+
+}
