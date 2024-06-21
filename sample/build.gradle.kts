@@ -41,19 +41,15 @@ kotlin {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", projects.koinexportProcessor)
+    add("kspIosSimulatorArm64", projects.koinexportProcessor)
+    add("kspIosX64", projects.koinexportProcessor)
+    add("kspIosArm64", projects.koinexportProcessor)
 }
 
 ksp {
     arg("packageName", "io.github.mykhailoliutov.koinexport.sample")
     arg("exportsFileName", "AppDependency")
     arg("mode", "properties")
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-    if (name.contains("android", ignoreCase = true)) {
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
 }
 
 kotlin.sourceSets.commonMain {

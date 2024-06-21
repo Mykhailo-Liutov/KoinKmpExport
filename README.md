@@ -20,14 +20,10 @@ Configure your KMP module by:
 2. Adding dependency on the ksp processor and configuring it:
 
    ```
-      dependencies {
-         add("kspCommonMainMetadata", "io.github.mykhailo-liutov:koinexport-processor:1.1")
-       }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-        if (name.contains("ios", ignoreCase = true)) {
-            dependsOn("kspCommonMainKotlinMetadata")
-        }
+    dependencies {
+        add("kspIosSimulatorArm64", "io.github.mykhailo-liutov:koinexport-processor:1.1")
+        add("kspIosX64", "io.github.mykhailo-liutov:koinexport-processor:1.1")
+        add("kspIosArm64", "io.github.mykhailo-liutov:koinexport-processor:1.1")
     }
 
     kotlin.sourceSets.commonMain {
