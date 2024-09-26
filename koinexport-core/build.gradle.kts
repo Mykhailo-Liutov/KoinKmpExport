@@ -34,7 +34,7 @@ publishing {
         artifact(javadocJar)
 
         groupId = "io.github.mykhailo-liutov"
-        version = "1.1"
+        version = "1.2"
 
         pom {
             name = "KoinKmpExport"

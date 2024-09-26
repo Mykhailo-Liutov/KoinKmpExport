@@ -6,12 +6,12 @@ compileSdk = "34"
 targetSdk = "34"
 
 # Plugins
-gradlePlugin = "8.2.0"
+gradlePlugin = "8.2.2"
 
 # Kotlin
-kotlin = "1.9.10"
+kotlin = "2.0.20"
 
-kotlin-ksp = "1.9.10-1.0.13"
+kotlin-ksp = "2.0.20-1.0.25"
 kotlin-poet = "1.14.2"
 
 # Koin
@@ -23,6 +23,7 @@ lifecycle = "2.6.2"
 
 # Other
 timber = "5.0.1"
+dokka = "1.9.20"
 
 # Compose
 compose-bom = "2023.10.01"
@@ -70,6 +71,7 @@ android-application = { id = "com.android.application", version.ref = "gradlePlu
 android-library = { id = "com.android.library", version.ref = "gradlePlugin" }
 
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin"}
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka"}
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin.ksp" }

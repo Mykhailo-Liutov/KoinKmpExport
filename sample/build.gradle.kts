@@ -1,4 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     with(libs.plugins) {
@@ -9,12 +11,11 @@ plugins {
 }
 
 kotlin {
+    androidTarget()
     jvmToolchain(11)
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
-            }
+    tasks.withType<KotlinJvmCompile>().configureEach {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     val xcf = XCFramework()
