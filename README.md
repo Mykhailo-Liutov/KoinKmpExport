@@ -66,6 +66,9 @@ public class AppDependency : KoinComponent {
 
 To mark a class than needs to be exported, annotate it with @KoinKmmExport. That's it, export will be automatically generated when building iOS target.
 
+There's support for using the @ObjCName annotation to rename classes in ObjectiveC. Just normally apply the annotation to the exported class, and the generated 
+export will have this name instead of the original name of the class.
+
 ## Example
 
 Annotated class:
