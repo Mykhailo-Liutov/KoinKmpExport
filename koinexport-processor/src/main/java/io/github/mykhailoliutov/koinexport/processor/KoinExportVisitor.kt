@@ -15,8 +15,9 @@ internal class KoinExportVisitor(
     override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: Unit) {
         val className = classDeclaration.simpleName.asString()
         val packageName = classDeclaration.packageName.asString()
+        val propertyName = getCustomObjCName(classDeclaration) ?: className
 
-        val extensionPropertyName = className.replaceFirstChar { it.lowercase() }
+        val extensionPropertyName = propertyName.replaceFirstChar { it.lowercase() }
 
         val getterSpec = FunSpec.getterBuilder()
             .addStatement("return get()")
@@ -27,5 +28,15 @@ internal class KoinExportVisitor(
                 .getter(getterSpec)
 
         addExportProperty(propertySpec)
+    }
+
+    private fun getCustomObjCName(classDeclaration: KSClassDeclaration): String?{
+        val classAnnotations = classDeclaration.annotations.firstOrNull {
+            it.shortName.getShortName() == "ObjCName"
+        }
+        val nameArgument = classAnnotations?.arguments?.firstOrNull{
+            it.name?.getShortName() == "name"
+        }
+        return nameArgument?.value?.toString()
     }
 }

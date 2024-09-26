@@ -1,7 +1,11 @@
 package io.github.mykhailoliutov.koinexport.sample
 
 import io.github.mykhailoliutov.koinexport.core.KoinKmmExport
+import kotlin.experimental.ExperimentalObjCName
+import kotlin.native.ObjCName
 
+@OptIn(ExperimentalObjCName::class)
+@ObjCName("NewNameUseCase")
 @KoinKmmExport
 class SampleUseCase {
 
